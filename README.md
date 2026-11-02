@@ -5,11 +5,18 @@ model (MediaPipe Gesture Recognizer) runs locally on your webcam. You write the 
 connects the model to the game.
 
 ## 1. Install
-**Fastest (macOS/Linux)** — one command; clones the repo, installs uv, Python 3.12 and the packages, and runs the checker:
+**Fastest — one command** (installs git-free if needed, uv, Python 3.12 and the packages, then runs the checker):
+
+macOS / Linux (Terminal):
 ```
 curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USER/rps-mediapipe/main/setup.sh | bash
 ```
-Then `cd rps-mediapipe` and skip to step 2 (use `.venv/bin/python main.py`).
+Windows (PowerShell):
+```
+irm https://raw.githubusercontent.com/YOUR_GITHUB_USER/rps-mediapipe/main/setup.ps1 | iex
+```
+Then `cd rps-mediapipe` and skip to step 2. Run the game with `.venv/bin/python main.py` (macOS/Linux) or
+`.venv\Scripts\python.exe main.py` (Windows).
 
 Manual steps:
 1. **Python 3.12** (3.10–3.13 work; newer may not have MediaPipe wheels yet).

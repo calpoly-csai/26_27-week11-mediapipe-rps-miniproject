@@ -6,14 +6,22 @@ set -euo pipefail
 
 REPO_URL="https://github.com/YOUR_GITHUB_USER/rps-mediapipe.git"
 DIR="rps-mediapipe"
+ZIP_URL="https://github.com/YOUR_GITHUB_USER/rps-mediapipe/archive/refs/heads/main.zip"
 
 # Inside a clone already? (requirements.txt next to this script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
 if [ -n "$SCRIPT_DIR" ] && [ -f "$SCRIPT_DIR/requirements.txt" ]; then
   cd "$SCRIPT_DIR"
 else
-  command -v git >/dev/null 2>&1 || { echo "git is required: https://git-scm.com/downloads"; exit 1; }
-  [ -d "$DIR" ] || git clone "$REPO_URL" "$DIR"
+  if [ ! -d "$DIR" ]; then
+    if command -v git >/dev/null 2>&1; then
+      git clone "$REPO_URL" "$DIR"
+    else
+      echo "git not found - downloading zip instead..."
+      curl -fsSL -o rps-mediapipe.zip "$ZIP_URL"
+      unzip -q rps-mediapipe.zip && mv "$DIR-main" "$DIR" && rm rps-mediapipe.zip
+    fi
+  fi
   cd "$DIR"
 fi
 
