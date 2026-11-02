@@ -42,6 +42,21 @@ def text(img, s, y, scale=1.0, color=(255, 255, 255), x=None):
     cv2.putText(img, s, (px, y), FONT, scale, color, 2, cv2.LINE_AA)
 
 
+HAND_CONNECTIONS = [(0, 1), (1, 2), (2, 3), (3, 4), (0, 5), (5, 6), (6, 7), (7, 8),
+                    (5, 9), (9, 10), (10, 11), (11, 12), (9, 13), (13, 14), (14, 15), (15, 16),
+                    (13, 17), (17, 18), (18, 19), (19, 20), (0, 17)]
+
+
+def draw_landmarks(img, pts):
+    """Draw the 21 hand landmarks (normalized x, y) and the bones between them."""
+    h, w = img.shape[:2]
+    px = [(int(x * w), int(y * h)) for x, y in pts]
+    for a, b in HAND_CONNECTIONS:
+        cv2.line(img, px[a], px[b], (255, 255, 255), 2, cv2.LINE_AA)
+    for p in px:
+        cv2.circle(img, p, 5, (0, 200, 0), -1, cv2.LINE_AA)
+
+
 def attempt(todos, name, fn, *a, **kw):
     """Call fn; if it's still a TODO, remember the file name and return None."""
     try:
@@ -145,6 +160,9 @@ def main():
 
         # --- drawing ---
         h, w = frame.shape[:2]
+        pts = getattr(gestures, "last_landmarks", None)  # set by the solution's recognize()
+        if pts and recognizer is not None:
+            draw_landmarks(frame, pts)
         if state == WAITING:
             text(frame, "Press SPACE to play", h // 2, 1.3)
         elif state == COUNTDOWN:

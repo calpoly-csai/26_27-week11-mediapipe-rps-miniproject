@@ -16,6 +16,10 @@ GESTURE_TO_MOVE = {
 }
 
 
+# Normalized (x, y) of the 21 hand landmarks from the latest frame; main.py draws them.
+last_landmarks = None
+
+
 def load_recognizer(image_mode=False):
     """Load the model. VIDEO mode (default) tracks hands across frames."""
     options = vision.GestureRecognizerOptions(
@@ -34,6 +38,8 @@ def recognize(recognizer, frame_bgr, timestamp_ms, image_mode=False):
         result = recognizer.recognize(image)
     else:
         result = recognizer.recognize_for_video(image, int(timestamp_ms))
+    global last_landmarks
+    last_landmarks = [(p.x, p.y) for p in result.hand_landmarks[0]] if result.hand_landmarks else None
     if not result.gestures:
         return None
     top = result.gestures[0][0]
