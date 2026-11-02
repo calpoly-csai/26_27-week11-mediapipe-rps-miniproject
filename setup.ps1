@@ -1,11 +1,11 @@
 # One-command setup for Windows (PowerShell). Clones the repo (or downloads the zip if git is
 # missing), installs uv + Python 3.12 + packages, runs the checker.
-#   irm https://raw.githubusercontent.com/YOUR_GITHUB_USER/rps-mediapipe/main/setup.ps1 | iex
+#   irm https://raw.githubusercontent.com/sipactivism/rps-mediapipe-miniproject/main/setup.ps1 | iex
 # Also works from inside an existing clone:  .\setup.ps1
 $ErrorActionPreference = "Stop"
 
-$User = "YOUR_GITHUB_USER"
-$Dir = "rps-mediapipe"
+$User = "sipactivism"
+$Dir = "rps-mediapipe-miniproject"
 $RepoUrl = "https://github.com/$User/$Dir.git"
 $ZipUrl = "https://github.com/$User/$Dir/archive/refs/heads/main.zip"
 
@@ -20,7 +20,7 @@ if (Test-Path "requirements.txt") {
             if ($LASTEXITCODE -ne 0) { throw "git clone failed" }
         } else {
             Write-Host "git not found - downloading zip instead..."
-            $zip = Join-Path $env:TEMP "rps-mediapipe.zip"
+            $zip = Join-Path $env:TEMP "rps-mediapipe-miniproject.zip"
             Invoke-WebRequest $ZipUrl -OutFile $zip
             Expand-Archive $zip -DestinationPath . -Force
             Rename-Item "$Dir-main" $Dir

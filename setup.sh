@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 # One-command setup (macOS/Linux). Clones the repo, installs uv + Python 3.12 + packages, runs the checker.
-#   curl -fsSL https://raw.githubusercontent.com/YOUR_GITHUB_USER/rps-mediapipe/main/setup.sh | bash
+#   curl -fsSL https://raw.githubusercontent.com/sipactivism/rps-mediapipe-miniproject/main/setup.sh | bash
 # Also works from inside an existing clone:  ./setup.sh
 set -euo pipefail
 
-REPO_URL="https://github.com/YOUR_GITHUB_USER/rps-mediapipe.git"
-DIR="rps-mediapipe"
-ZIP_URL="https://github.com/YOUR_GITHUB_USER/rps-mediapipe/archive/refs/heads/main.zip"
+REPO_URL="https://github.com/sipactivism/rps-mediapipe-miniproject.git"
+DIR="rps-mediapipe-miniproject"
+ZIP_URL="https://github.com/sipactivism/rps-mediapipe-miniproject/archive/refs/heads/main.zip"
 
 # Inside a clone already? (requirements.txt next to this script)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
@@ -18,8 +18,8 @@ else
       git clone "$REPO_URL" "$DIR"
     else
       echo "git not found - downloading zip instead..."
-      curl -fsSL -o rps-mediapipe.zip "$ZIP_URL"
-      unzip -q rps-mediapipe.zip && mv "$DIR-main" "$DIR" && rm rps-mediapipe.zip
+      curl -fsSL -o rps-mediapipe-miniproject.zip "$ZIP_URL"
+      unzip -q rps-mediapipe-miniproject.zip && mv "$DIR-main" "$DIR" && rm rps-mediapipe-miniproject.zip
     fi
   fi
   cd "$DIR"
