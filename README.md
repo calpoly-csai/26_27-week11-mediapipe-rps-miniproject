@@ -48,7 +48,9 @@ Google already **trained** this model; we only **use** it. It runs offline on yo
 Built-in gestures: `Closed_Fist, Open_Palm, Pointing_Up, Thumb_Down, Thumb_Up, Victory, ILoveYou, None`.
 
 ## 4. Your steps
-Each step ends with something changing on screen. Docs:
+Each step ends with something changing on screen. **New to OpenCV / MediaPipe? Read
+[GUIDE.md](GUIDE.md):** it explains what every library call does, what the model returns,
+and walks through each step with tests and common mistakes. Official docs:
 <https://ai.google.dev/edge/mediapipe/solutions/vision/gesture_recognizer/python>
 
 | Step | File | What to do | Win |
