@@ -1,4 +1,4 @@
-Put rock / paper / scissors hand photos (.jpg/.png) here for laptops without a webcam:
+Hand photos for laptops without a webcam (8 included; add your own .jpg/.png too):
 
     python main.py --images sample_images
 

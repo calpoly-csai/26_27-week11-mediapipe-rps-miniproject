@@ -41,6 +41,11 @@ If you denied it: System Settings → Privacy & Security → Camera → enable i
 `python main.py` — press SPACE to start. The countdown works; at "Shoot!" you see `???`
 and a "TODO" note. Q quits, R restarts. See the finished game: `python main.py --solution`.
 
+**No webcam (or camera won't open)?** Play with the 8 included hand photos instead:
+`python main.py --images sample_images`. Each SPACE shows the next photo, and the model
+reads the hand in it just like a webcam frame. Try `python main.py --solution --images sample_images`
+to see it working. Add your own `.jpg`/`.png` hand photos to that folder too.
+
 ## 3. How a gesture recognizer works
 1. Find the hand in the image. 2. Place 21 landmarks (knuckles, fingertips). 3. A classifier
 decides which gesture those points form, with a confidence score (`Victory`, 0.92).
@@ -68,7 +73,7 @@ Stuck? Compare with `solution/`.
 - `pip` / `python` not found (Windows): reinstall Python with "Add to PATH" ticked, or try `py`.
 - Black window / camera error: see macOS permission above; close Zoom/Teams; try `--camera 1`.
 - Hand not detected: face a light source, plain background, hand fully in frame.
-- No webcam: pair up, or add photos to `sample_images/` and run `python main.py --images sample_images`.
+- No webcam: `python main.py --images sample_images` (8 hand photos included; see section 2), or pair up.
 
 ## 6. Extensions
 - **Level 2:** sounds, animations, best-of-5, win streaks, draw the 21 landmarks.
