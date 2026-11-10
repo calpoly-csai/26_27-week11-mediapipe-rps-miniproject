@@ -9,13 +9,13 @@ connects the model to the game.
 
 macOS / Linux (Terminal):
 ```
-curl -fsSL https://raw.githubusercontent.com/sipactivism/rps-mediapipe-miniproject/main/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/calpoly-csai/week11-mediapipe-rps-miniproject/main/setup.sh | bash
 ```
 Windows (PowerShell):
 ```
-irm https://raw.githubusercontent.com/sipactivism/rps-mediapipe-miniproject/main/setup.ps1 | iex
+irm https://raw.githubusercontent.com/calpoly-csai/week11-mediapipe-rps-miniproject/main/setup.ps1 | iex
 ```
-Then `cd rps-mediapipe-miniproject` and skip to step 2. Run the game with `.venv/bin/python main.py` (macOS/Linux) or
+Then `cd week11-mediapipe-rps-miniproject` and skip to step 2. Run the game with `.venv/bin/python main.py` (macOS/Linux) or
 `.venv\Scripts\python.exe main.py` (Windows).
 
 Manual steps:
@@ -25,7 +25,7 @@ Manual steps:
 2. **Git**: <https://git-scm.com/downloads> (Windows).
 3. Clone and set up:
    ```
-   git clone https://github.com/sipactivism/rps-mediapipe-miniproject.git && cd rps-mediapipe-miniproject
+   git clone https://github.com/calpoly-csai/week11-mediapipe-rps-miniproject.git && cd week11-mediapipe-rps-miniproject
    python -m venv .venv
    .venv\Scripts\activate          # Windows
    source .venv/bin/activate       # macOS / Linux
